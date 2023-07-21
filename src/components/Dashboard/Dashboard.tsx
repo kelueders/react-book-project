@@ -10,12 +10,19 @@ import { Drawer as MUIDrawer,
     Divider,
     Button,
     CssBaseline,
-    Box
+    Box,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { ChevronRight, ChevronLeft } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { theme } from '../../Theme/themes';
+import DataCard from '../DataCard/DataCard';
+import { BookForm } from '../BookForm';
 
 const drawerWidth = 240;
 
@@ -87,6 +94,7 @@ export const Dashboard = () => {
     // Components are built from Hooks, whether built-in or custom.
     const navigate = useNavigate();
     const [ open, setOpen ] = useState(false);   // drawer is set to false or closed at first
+    const [ dialogOpen, setDialogOpen ] = useState(false)
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -94,6 +102,15 @@ export const Dashboard = () => {
 
     const handleDrawerClose = () => {
         setOpen(false)
+    }
+
+    // Handle Dialog Open/Close
+    const handleDialogOpen = () => {
+        setDialogOpen(true);
+    }
+
+    const handleDialogClose = () => {
+        setDialogOpen(false);
     }
 
     const itemsList = [
@@ -128,7 +145,19 @@ export const Dashboard = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap> Dashboard</Typography>
-                    <Button sx={ myStyles.toolbarButton }>Create New Book</Button>
+                    <Button onClick={ handleDialogOpen } sx={ myStyles.toolbarButton }>Create New Book</Button>
+                    
+                    {/* Create Drone Dialog Popup */}
+                    <Dialog open={ dialogOpen } onClose={ handleDialogClose } aria-labelledby='form-dialog-title'>
+                        <DialogTitle id='form-dialog-title'>Add New Book</DialogTitle>
+                        <DialogContent>
+                            <DialogContentText> Enter Book Info Here </DialogContentText>
+                            <BookForm /> 
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleDialogClose} sx={{ backgroundColorcolor: 'pink' }} color='error'>Cancel</Button>
+                        </DialogActions>
+                    </Dialog>
                 </Toolbar>
             </AppBar>
             {/* Display our navigation options, shows the things inside the itemsList */}
@@ -162,7 +191,8 @@ export const Dashboard = () => {
             {/* Box component is basically a div that we use to access our theme */}
             <Box sx={ myStyles.content } >
                 <Box sx={ myStyles.drawerHeader} />
-                    <h1>Hello World Until Data Shows Up</h1>
+                    <h1>Your Books</h1>
+                    <DataCard />
                 </Box>
             </Box>
     )
