@@ -21,7 +21,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ChevronRight, ChevronLeft } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { theme } from '../../Theme/themes';
-import DataCard from '../DataCard/DataCard';
+// import DataCard from '../DataCard/DataCard';
+import { DataTable } from '../DataCard/DataCard';
 import { BookForm } from '../BookForm';
 
 const drawerWidth = 240;
@@ -192,7 +193,7 @@ export const Dashboard = () => {
             <Box sx={ myStyles.content } >
                 <Box sx={ myStyles.drawerHeader} />
                     <h1>Your Books</h1>
-                    <DataCard />
+                    <DataTable />
                 </Box>
             </Box>
     )

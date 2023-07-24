@@ -10,7 +10,7 @@ export const useGetData = () => {
     // use the useState hook setting the data expected to any since we don't know 
     const [bookData, setData] = useState<any>([]);
 
-    // we go out to get our API data and then store that data inside of droneData because the setData function sets the state
+    // we go out to get our API data and then store that data inside of bookData because the setData function sets the state
     async function handleDataFetch(){
         const result = await serverCalls.get();
         setData(result)
