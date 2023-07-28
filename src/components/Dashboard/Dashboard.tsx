@@ -21,8 +21,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { ChevronRight, ChevronLeft } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { theme } from '../../Theme/themes';
-// import DataCard from '../DataCard/DataCard';
-import { DataTable } from '../DataCard/DataCard';
+import { BasicCard } from '../DataCard/DataCard';
+import { DataTable } from '../DataTable/DataTable';
 import { BookForm } from '../BookForm';
 
 const drawerWidth = 240;
