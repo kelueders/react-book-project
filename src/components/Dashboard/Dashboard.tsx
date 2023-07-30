@@ -193,7 +193,7 @@ export const Dashboard = () => {
             <Box sx={ myStyles.content } >
                 <Box sx={ myStyles.drawerHeader} />
                     <h1>Your Books</h1>
-                    <DataTable />
+                    <BasicCard />
                 </Box>
             </Box>
     )
